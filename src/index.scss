@@ -1,9 +1,24 @@
-$font-stack:    Helvetica, sans-serif;
+@import url('https://fonts.googleapis.com/css?family=Share+Tech+Mono');
+@import url('https://fonts.googleapis.com/css?family=Bungee+Outline');
+@import url('https://fonts.googleapis.com/css?family=Bungee+Inline');
+@import url('https://fonts.googleapis.com/css?family=Bungee+Shade');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+// $primary-font-stack: 'Share Tech Mono', monospace;
+// $secondary-font-stack: "Share Tech Mono", monospace;
+
+// $primary-font-stack: "Bungee Outline", cursive;
+// $secondary-font-stack:  "Bungee Inline", cursive;
+$primary-font-stack: "Bungee Shade", cursive;;
+$secondary-font-stack:  "Bungee Inline", "Bungee Shade", cursive;
+
 $primary-color: #333;
 
 body {
-    font: 100% $font-stack;
+    font: 18px $secondary-font-stack;
     color: $primary-color;
+    margin: 0;
 }
 
 .grid {
@@ -18,7 +33,14 @@ body {
     // grid-row-gap: 50px;
     grid-template-columns: 0px 1fr 1fr 1fr 1fr;
     padding: 0 20px 10px 10px;    
-    background-color: #2196F3;
+    background-color: black;
+}
+
+@media (min-width: 1000px) {
+    .grid {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        padding: 0 10px 10px 10px;    
+    }
 }
 
 nav {
@@ -31,36 +53,58 @@ header {
     grid-template-areas:
       'photo title'
       'photo subtitle';      
-    grid-gap: 10px;
-    padding: 5px 5px;
-    background: aqua;
+    grid-template-columns: 10em auto;      
+    padding: 0 6em 0 1em;
+    background: white;
+    justify-items: center;
+    align-items: center;
+    justify-content: stretch;
+    border-radius: 10em;
+    border: 1px inset white;
+    box-shadow: inset 1px 0px 18px 5px black;
+    
+}
+
+h1, h2, h3 {
+    font-family: $primary-font-stack;
+    text-align: center;        
 }
 
 h1 {
     grid-area: title;    
-    background: #0f3655;
-    color: white;
+    color: rgba(0, 0, 0, 0.5);
+    text-shadow: 0 6px 26px #aa0999; // TODO: animate blur
+    font-size: 2.5em;
 }
 
 h2 {
     grid-area: subtitle;    
-    background: #07346e;
-    color: white;
+    color: black;
+    margin-top: -2em;
 }
 
 .photo {
     grid-area: photo;    
-    background: mediumaquamarine;    
+    border-radius: 10em;
+    
+
+    div {        
+        box-shadow: inset 0px 0px 15px 0px black;        
+        border-radius: 50%;
+        height: 10em;
+        width: 10em;
+        background: #13c8dcbf;
+    }
 }
 
 main {
     grid-area: main;    
     display: grid;    
-    background: mediumvioletred;
+    background: #fff2f2;
 }
 
 
 footer {
     grid-area: footer;        
-    background: mediumturquoise;
+    background: #ffffffde;
 }
