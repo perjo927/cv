@@ -6,5 +6,10 @@
   "dependencies": {},
   "devDependencies": {
     "node-sass": "^4.8.3"
+  },
+  "scripts": {
+    "build": "parcel ./src/index.html",
+    "start": "parcel ./src/index.html",
+    "test": "TODO"
   }
 }
