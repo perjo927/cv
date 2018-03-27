@@ -10,12 +10,15 @@
 
 // $primary-font-stack: "Bungee Outline", cursive;
 // $secondary-font-stack:  "Bungee Inline", cursive;
-$primary-font-stack: "Bungee Shade", cursive;;
+
+$primary-font-stack: "Bungee Shade", cursive;
 $secondary-font-stack:  "Bungee Inline", "Bungee Shade", cursive;
 
 $primary-color: #333;
 
 body {
+    box-shadow: inset 0px 0px 20px 0px black;
+    border: 3px solid black;
     font: 18px $secondary-font-stack;
     color: $primary-color;
     margin: 0;
@@ -33,7 +36,6 @@ body {
     // grid-row-gap: 50px;
     grid-template-columns: 0px 1fr 1fr 1fr 1fr;
     padding: 0 20px 10px 10px;    
-    background-color: black;
 }
 
 @media (min-width: 1000px) {
@@ -65,7 +67,7 @@ header {
     
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4 {
     font-family: $primary-font-stack;
     text-align: center;        
 }
@@ -81,6 +83,15 @@ h2 {
     grid-area: subtitle;    
     color: black;
     margin-top: -2em;
+}
+
+h3 {
+    text-shadow: -10px 12px 7px #9d9b9d;   // TODO: animate blur
+}
+
+h4 {
+    font-family: $secondary-font-stack;    
+    text-shadow: -10px 12px 7px #9d9b9d; // TODO: animate blur
 }
 
 .photo {
@@ -100,11 +111,28 @@ h2 {
 main {
     grid-area: main;    
     display: grid;    
-    background: #fff2f2;
+    box-shadow: inset 0px 10px 20px 0px black;
+    border: 1px solid black;
+    padding: 0.5em;    
+    background: #faf9ec;
+    
 }
 
+.skills {
+    // TODO: test 3D text
+    text-shadow: -3px 7px 7px #9d9b9d;   
+    box-shadow: 0px 14px 20px 0px #000000b0;
+    padding: 0.5em;
+    
+}
+
+.work {
+    box-shadow: inset 0px 10px 20px 0px #000000b0;
+    padding: 0.5em;
+}
 
 footer {
     grid-area: footer;        
     background: #ffffffde;
+    box-shadow: 0px 14px 20px 2px #000000b0;
 }
