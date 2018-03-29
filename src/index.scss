@@ -2,24 +2,35 @@
 @import url('https://fonts.googleapis.com/css?family=Bungee+Outline');
 @import url('https://fonts.googleapis.com/css?family=Bungee+Inline');
 @import url('https://fonts.googleapis.com/css?family=Bungee+Shade');
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
-@import url('https://fonts.googleapis.com/css?family=Roboto');
 
-// $primary-font-stack: 'Share Tech Mono', monospace;
-// $secondary-font-stack: "Share Tech Mono", monospace;
-
-// $primary-font-stack: "Bungee Outline", cursive;
-// $secondary-font-stack:  "Bungee Inline", cursive;
 
 $primary-font-stack: "Bungee Shade", cursive;
-$secondary-font-stack:  "Bungee Inline", "Bungee Shade", cursive;
+$secondary-font-stack:  "Bungee Outline", cursive;
+$tertiary-font-stack:  "Bungee Inline", cursive;
+$quartiary-font-stack: 'Share Tech Mono', monospace;
+
 
 $primary-color: #333;
 
+$text-shadow: 0px 1px 3px #bbb, 
+    0px 2px 2px #aaa, 
+    0px 3px 1px #999,
+    0px 4px 0px #888,
+    0px 5px 0px #777,
+    0px 6px 0px #666,
+    0px 7px 0px #555,
+    0px 9px 5px #444,
+    0px 10px 20px #333;
+
+$box-shadow: inset 0px 20px 20px 0px rgb(0, 0, 0);      
+
+
 body {
+    box-sizing: border-box;
+    
     box-shadow: inset 0px 0px 20px 0px black;
     border: 3px solid black;
-    font: 18px $secondary-font-stack;
+    font: 18px $tertiary-font-stack;
     color: $primary-color;
     margin: 0;
 }
@@ -61,78 +72,156 @@ header {
     justify-items: center;
     align-items: center;
     justify-content: stretch;
-    border-radius: 10em;
-    border: 1px inset white;
-    box-shadow: inset 1px 0px 18px 5px black;
+    
+}
+
+@keyframes boxier {
+    0% {box-shadow: $box-shadow;}
+    75% {box-shadow: $box-shadow;}
+    100% {box-shadow: inset 1px 1px 20px 0px black; }   
+}
+
+@keyframes deeper {
+    
+    0% {text-shadow: $text-shadow;}
+    75% {text-shadow: $text-shadow;}
+    100%   {$text-shadow: 0px 1px 2px #111; }        
     
 }
 
 h1, h2, h3, h4 {
-    font-family: $primary-font-stack;
+    font-family: $tertiary-font-stack;
+    
     text-align: center;        
+    color: #f1f1f1;
+    // text-shadow: $text-shadow; 
+    //  TODO: animate blur
+    white-space: nowrap;
+
+    animation-name: deeper;
+    animation-duration: 5s;
+    // animation-delay: 2s;
+    // animation-iteration-count: 3;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    // animation-fill-mode: both;
+    animation-timing-function: ease-in-out;
+    
 }
 
 h1 {
     grid-area: title;    
-    color: rgba(0, 0, 0, 0.5);
-    text-shadow: 0 6px 26px #aa0999; // TODO: animate blur
-    font-size: 2.5em;
+    font-family: $secondary-font-stack;                      
+    font-size: 2.6em;
 }
 
 h2 {
     grid-area: subtitle;    
-    color: black;
-    margin-top: -2em;
+    margin-top: -3.5em;
+    font-family: $tertiary-font-stack;
 }
 
-h3 {
-    text-shadow: -10px 12px 7px #9d9b9d;   // TODO: animate blur
+h3, h4 {
+    padding-left: 2em;    
+    text-align: left;
 }
 
-h4 {
-    font-family: $secondary-font-stack;    
-    text-shadow: -10px 12px 7px #9d9b9d; // TODO: animate blur
+@media (max-width: 700px) {
+    h1 {
+        font-size: 1.5em;        
+    }
+    h2 {
+        font-size: 0.7em;        
+    }
 }
 
 .photo {
     grid-area: photo;    
-    border-radius: 10em;
-    
+    border-radius: 50%;
+    margin-bottom: -2em;
 
-    div {        
-        box-shadow: inset 0px 0px 15px 0px black;        
+    img {
+
+        padding: 2em 1em;
+        width: 4em;
+        height: 4em;
         border-radius: 50%;
-        height: 10em;
-        width: 10em;
-        background: #13c8dcbf;
+    }
+
+
+    div {    
+        // box-shadow: $box-shadow;
+
+        animation-name: boxier;
+        animation-duration: 5s;
+        // animation-delay: -5s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+        animation-timing-function: ease-in-out;
+
+        border-radius: 50%;
+        height: 6em;
+        width: 6em;
+        background: #f7f7f7bf
     }
 }
 
 main {
     grid-area: main;    
     display: grid;    
-    box-shadow: inset 0px 10px 20px 0px black;
-    border: 1px solid black;
-    padding: 0.5em;    
-    background: #faf9ec;
+    box-shadow: inset 0px 8px 20px 6px black;
+    background: #eee;
+    
+}
+
+.contact {
+    // box-shadow: inset 0px 8px 20px 0px #000000;
+}
+
+.about {
+    font-family: $quartiary-font-stack;
+    text-shadow: 
+        0 -1px 1px #989898,
+        0 0px 1px #767676,
+        0 1px 2px #474747;
+    color: #f2f2f2;
+     font-size: 0.7em;
+    box-shadow: inset 0px 0px 5px 0px #000000;
+    padding: 0.5em;
+    h4 {
+        font-size: 1.5em;
+    }
     
 }
 
 .skills {
+    // background: #cccccc;        
     // TODO: test 3D text
-    text-shadow: -3px 7px 7px #9d9b9d;   
-    box-shadow: 0px 14px 20px 0px #000000b0;
+    box-shadow: inset 0px 10px 20px 0px #000000;
     padding: 0.5em;
     
 }
 
 .work {
-    box-shadow: inset 0px 10px 20px 0px #000000b0;
+    // background: #bbb;            
+    box-shadow: inset 0px 0px 5px 0px #000000;
+    padding: 0.5em;
+}
+
+.education {
+    // background: #aaa;                
+    // box-shadow: inset 0px 0px 5px 0px #000000;
+    padding: 0.5em;
+}
+
+.recommendations {
+    // background: #999;                
+    
+    box-shadow: inset 0px 0px 20px 6px #000000;
     padding: 0.5em;
 }
 
 footer {
     grid-area: footer;        
     background: #ffffffde;
-    box-shadow: 0px 14px 20px 2px #000000b0;
 }
