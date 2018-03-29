@@ -121,27 +121,38 @@ h3, h4 {
     line-height: 0;
 }
 
+@media (min-width: 901px) {
+    body { font-size: 22px;}
+}
+
+@media (max-width: 900px) {
+    body { font-size: 18px;}
+}
+
 @media (max-width: 700px) {
-    h1 {
-        font-size: 1.5em;        
-    }
-    h2 {
-        font-size: 0.7em;        
-    }
+    body { font-size: 14px;}
 }
 
 @media (max-width: 500px) {
-    h1 {
-        font-size: 1em;        
-    }
-    h2 {
-        font-size: 0.5em;        
-    }
+    body { font-size: 10px;}
+}
+
+@media (max-width: 400px) {
+    body { font-size: 8px;}
+
+
 }
 
 .photo {
     grid-area: photo;    
-    box-shadow: 0px 4px 7px 0px black;
+    box-shadow: 0px 0px 0px 0px black,
+    0px 1px 1px 0px #333,
+    0px 2px 1px 0px #444,
+    0px 3px 1px 0px #555,
+    0px 4px 1px 0px #666,
+    0px 5px 10px 0px #777;
+    
+    
     border-radius: 50%;
     margin-bottom: -2em;
 
@@ -150,6 +161,7 @@ h3, h4 {
         width: 4em;
         height: 5em;
         border-radius: 50%;
+        
     }
 
 
@@ -182,6 +194,20 @@ main {
     &:hover {
         box-shadow: inset 0px 0px 20px 0px black;
         
+    }
+
+    i {
+        padding: 1em;
+        text-shadow: $text-shadow;
+    }
+
+    span { 
+        font-size: 0.5em; 
+        font-family: $quartiary-font-stack;
+        text-shadow: 
+            0 -1px 1px #989898,
+            0 0px 1px #767676,
+            0 1px 2px #474747;
     }
 }
 
