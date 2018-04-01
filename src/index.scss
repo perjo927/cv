@@ -10,16 +10,6 @@ $primary-color: #ddd;
 $text-shadow: 0px 1px 3px #bbb, 0px 2px 2px #aaa, 0px 3px 1px #999, 0px 4px 0px #888, 0px 5px 0px #777, 0px 6px 0px #666, 0px 7px 0px #555, 0px 9px 5px #444, 0px 10px 20px #555;
 $box-shadow: inset 0px 20px 20px 0px rgb(0, 0, 0);
 
-@keyframes sepia {
-  from {
-    filter: sepia(1);
-  }
-
-  to {
-    filter: sepia(0);
-  }
-}
-
 @keyframes hue {
   from {
     filter: hue-rotate(0deg);
@@ -41,13 +31,16 @@ $box-shadow: inset 0px 20px 20px 0px rgb(0, 0, 0);
 }
 
 @keyframes color {
-  from {
+  0% {
     filter: sepia(1);
     color: $primary-color;
   }
 
-  to {
-    filter: sepia(0);
+  50%{
+    filter: sepia(0);    
+  }
+
+  100% {
     color: black;
   }
 }
@@ -80,7 +73,7 @@ body {
   color: black;
   margin: 0;
   animation-name: color;
-  animation-duration: 5s;
+  animation-duration: 3s;
   animation-iteration-count: 1;
   animation-direction: forwards;
   // animation-fill-mode: both;
@@ -207,8 +200,8 @@ h4 {
   border-radius: 50%;
   margin-bottom: -2em;
 
+
   &:hover {
-    filter: sepia(1);
   }
 
   img {
@@ -216,29 +209,19 @@ h4 {
     width: 4em;
     height: 5em;
     border-radius: 50%;
-    animation-name: opacity;
-    animation-duration: 5s;
-    animation-iteration-count: 1;
-    animation-direction: forwards;
-    animation-timing-function: ease-in-out;
+    animation: opacity 3s 1 forwards ease-in-out;
     transform: rotateY(180deg);
-    filter: drop-shadow(10px 1px 6px #999);
-    filter: hue-rotate(20deg);
-    animation-name: hue;
-    animation-duration: 15s;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    animation-fill-mode: both;
-    animation-timing-function: ease-in-out;
+    filter: drop-shadow(10px 1px 6px #999), hue-rotate(20deg);
+    animation: hue 15s infinite alternate both ease-in-out;
+
+    &:hover {
+      transform: rotateY(0deg);      
+    }
   }
 
   div {
-    // box-shadow: $box-shadow;
     border: 5px solid white;
-    animation-name: boxier;
-    animation-duration: 5s;
-    animation-fill-mode: forwards;
-    animation-timing-function: ease-in-out;
+    animation: boxier 3s forwards ease-in-out;
     border-radius: 50%;
     height: 6em;
     width: 6em;
@@ -255,6 +238,7 @@ main {
 }
 
 .contact {
+  cursor: pointer;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   transition: filter 0.3s;
@@ -296,9 +280,11 @@ main {
 
 .title {
   filter: drop-shadow(-7px 7px 11px #aaa);
+  transition: all 0.2s;
 
   &:hover {
-    filter: drop-shadow(-7px 7px 11px rgb(221, 11, 193));
+    // filter: drop-shadow(-7px 7px 11px rgb(221, 11, 193));
+    filter: sepia(1);
   }
 }
 
@@ -306,15 +292,18 @@ main {
   filter: drop-shadow(-6px 6px 10px #aaa);
 
   &:hover {
-    filter: drop-shadow(-7px 7px 11px rgb(221, 11, 193));
+    // filter: drop-shadow(-7px 7px 11px rgb(221, 11, 193));
+    filter: sepia(1);
+    
   }
 }
 
 .about {
+  cursor: pointer;  
   font-family: $quartiary-font-stack;
   text-shadow: 0 -1px 1px #989898, 0 0px 2px #767676, 0 1px 4px #003759;
   color: #f2f2f2;
-  font-size: 0.65em;
+  font-size: 0.65em; // span?
   box-shadow: inset 1px 0px 2px -1px #000000;
   padding: 0 0 1em 0.5em;
 
@@ -346,8 +335,7 @@ section {
     }
 
     &:active {
-      text-shadow: 0px 1px 1px #999;    
-      
+      text-shadow: 0px 1px 1px #999;
     }
   }
 }
@@ -384,8 +372,6 @@ section {
   // display: block !important;
   visibility: visible !important;
   height: auto !important;
-  
-  
 }
 
 .content {
@@ -397,11 +383,10 @@ section {
 .work {
   box-shadow: inset 0px -1px 2px -2px #000000;
 
-
   .content {
     font-family: $quartiary-font-stack;
     text-shadow: 0px 1px 1px #999;
-  } 
+  }
 }
 
 .logos {
@@ -412,8 +397,6 @@ section {
   justify-content: stretch;
   grid-gap: 1em;
   padding: 0 0 1em 0;
-  
-
 }
 
 picture {
@@ -429,6 +412,7 @@ picture {
   &:active {
     box-shadow: inset 0px 10px 20px 0px black;
   }
+
   img {
     width: 6em;
     height: 6em;
@@ -448,18 +432,26 @@ picture {
     justify-content: stretch;
     grid-gap: 1em;
   }
+
   h5,
   p {
     font-family: $quartiary-font-stack;
     line-height: 0;
     text-shadow: 0 0 0 black;
   }
+
   p {
     font-size: 0.6em;
   }
 }
 
 footer {
+  i {
+    // color: red;
+  }
+  margin-top: 1em;
+  font-family: $quartiary-font-stack;
+  cursor: pointer;
   grid-area: footer;
   background: #ffffffde;
 }

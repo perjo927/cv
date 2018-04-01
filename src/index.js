@@ -3,7 +3,7 @@ import "./index.scss";
 // TODO: tests
 
 const sections = Array.from(
-  ["skills", "work", "education", "recommendations"],
+  ["contact", "about", "skills", "work", "education", "recommendations"],
   x => document.getElementsByClassName(x)
 );
 
