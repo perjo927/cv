@@ -2,20 +2,15 @@ import "./index.scss";
 
 // TODO: tests
 
-const sections = Array.from(
-  ["contact", "about", "skills", "work", "education", "recommendations"],
-  x => document.getElementsByClassName(x)
-);
 
-const toggleShow = event => {
-  const parent = event.target.className;
+const toggleShow = (event) => {
+  const parent = event.target.parentElement.className;
   const content = document.querySelectorAll(`.${parent} .content`)[0];
-  console.log("parent", parent, "content", content)
   content.classList.toggle("show");
 };
 
-sections.forEach((section, i, a) => {
-  for (let s of section) {
+const sections = document.getElementsByClassName("toggle");
+
+for (let s of sections) {
     s.onclick = toggleShow;
   }
-});
