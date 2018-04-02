@@ -100,7 +100,7 @@ header {
   grid-template-areas: 'photo title' 'photo subtitle';
   grid-template-columns: 10em auto;
   padding: 0 6em 0 1em;
-  background: white;
+  background: hsla(0, 0%, 100%, 0);;
   justify-items: center;
   align-items: center;
   justify-content: stretch;
@@ -242,12 +242,40 @@ a {
 }
 
 main {
+  width: 90vw;
+  min-height: 60vh;
   grid-area: main;
   display: grid;
   box-shadow: inset 0px 8px 20px 6px black;
   background: #eee;
   border-radius: 3px;
 }
+
+.door {
+  background: #f7f7f7;
+  min-height: 59.2vh;
+  width: 89.7vw;
+  border: 2px solid black;
+  box-shadow: inset 0px 5px 12px 0px black;
+  border-radius: 5px;
+  position: absolute;
+  text-align: center;
+  cursor: pointer;
+  font-family: $tertiary-font-stack;
+
+  transition: all 0.4s ease-in-out;
+
+  &:hover {
+    background: rgb(177, 177, 177);
+  }
+
+  &.close {
+    min-height: 0 !important;
+    font-size: 0;
+  }
+}
+
+
 
 .contact {
   
@@ -325,8 +353,11 @@ main {
 
   &:hover {
     background: black;
-    filter: sepia(1);
     box-shadow: inset 0px 0px 20px 0px black;
+
+    .content {
+      filter: sepia(1);
+    }
   }
 }
 
@@ -356,14 +387,45 @@ section {
   .skills-list {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    justify-items: end;
-    // align-items: center;
-    // justify-content: stretch;
+    font-size: 0.8em;
+    grid-gap: 0.2em;
+    padding: 0em 1em;
+    
   }
 
   &:hover {
-    .list::after {
+    #js::after {
+      content: "★★★★★";
+    }
+    #html::after {
+      content: "★★★★★";
+    }
+    #css::after {
       content: "★★★★☆";
+    }
+    #git::after {
+      content: "★★★★☆";
+    }
+    #csharp::after {
+      content: "★★★☆☆";
+    }
+    #dotnet::after {
+      content: "★★★☆☆";
+    }
+    #python::after {
+      content: "★★☆☆☆";
+    }
+    #java::after {
+      content: "★★☆☆☆";
+    }
+    #c::after {
+      content: "★★☆☆☆☆";
+    }
+    #sql::after {
+      content: "★☆☆☆☆";
+    }
+    #erlang::after {
+      content: "☆☆☆☆☆";
     }
   }
 }
@@ -379,13 +441,11 @@ section {
 }
 
 .show {
-  // display: block !important;
   visibility: visible !important;
   height: auto !important;
 }
 
 .content {
-  // display: none;
   visibility: hidden;
   height: 0;
 }
